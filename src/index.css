@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Geist";
+  src: url(../public/fonts/Geist-Thin.ttf) format(woff2);
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: "Geist";
+  src: url(../public/fonts/Geist-Medium.ttf) format(woff2);
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Geist";
+  src: url(../public/fonts/Geist-Bold.ttf) format(woff2);
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Geist";
+  src: url(../public/fonts/Geist-Black.ttf) format(woff2);
+  font-weight: 900;
+}
+
+.spin {
+  display: inline-block;
+  animation: spin 1s linear infinite;
+}
+
+.glass .main-box:not(.no-backdrop) {
+  backdrop-filter: blur(2rem);
+  background-color: var(--gray-neutral-0) !important;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 100;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 100;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@theme {
+  --color-border: var(--border);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-text-foreground: var(--text-foreground);
+
+  --color-primary: var(--primary);
+  --color-mistakes: var(--mistakes);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --gray-neutral-0: var(--black-shade-50);
+}
+
+@layer base {
+  :root {
+    --foreground: hsl(0, 0%, 64%);
+    --text-foreground: hsl(0, 0%, 100%);
+
+    --black-shade-50: #00000080;
+
+    --card: 0, 0%, 95%;
+
+    --primary: hsl(250 47% 60%);
+    --mistakes: hsl(0, 66%, 44%);
+
+    --primary-foreground: hsl(210 40% 98%);
+
+    --border: hsl(214 32% 91%);
+  }
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+
+  @media (width >=640px) {
+    max-width: 640px;
+  }
+
+  @media (width >=768px) {
+    max-width: 768px;
+  }
+
+  @media (width >=1024px) {
+    max-width: 1024px;
+  }
+
+  @media (width >=1280px) {
+    max-width: 1280px;
+  }
+
+  @media (width >=1400px) {
+    max-width: 1400px;
+  }
+}
+
+@utility glass {
+  backdrop-filter: blur(2rem);
+  background-color: var(--gray-neutral-0) !important;
+}
+
+@utility cosmic-button {
+  @apply px-6 py-2 rounded-lg bg-primary text-primary-foreground font-medium transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer;
+}
+
+* {
+  @apply border-border;
+}
+
+html {
+  @apply scroll-smooth;
+  background-image: url(../public/background.jpg);
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+body {
+  @apply bg-background text-foreground transition-colors duration-300 text-center font-[Geist];
+}
+
+#root {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
